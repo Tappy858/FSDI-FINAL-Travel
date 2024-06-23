@@ -1,0 +1,57 @@
+/* -- Project Section -- */
+.project-section {
+    padding: 2rem;
+    background-color: var(--secondary-color-900);
+}
+
+.project-card {
+    width: 25rem;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+    border-radius: 1%;
+}
+
+.project-card:hover {
+    opacity: 0.5;
+    border: solid 1px var(--secondary-color);
+}
+
+.project-card img {
+    width: 100%;
+    border-radius: 1%;
+}
+
+.skills-container {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+a p:nth-child(2) {
+    font-weight: bolder;
+    font-size: 1.1rem;
+    margin: 0.5rem 0px;
+}
+
+/* change the style of the description to be: italic */
+a p:nth-child(3) {
+    font-style: italic;
+}
+
+a p:nth-child(4) {
+    font-weight: bolder;
+    font-style: italic;
+    letter-spacing: 0.2rem;
+    margin: 0.5rem 0px;
+}
+
+.project-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    gap: 4rem;
+    margin-top: 2rem;
+}

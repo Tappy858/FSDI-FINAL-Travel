@@ -1,0 +1,90 @@
+/* users.css */
+
+/* Common styles for user-related pages */
+.login,
+.signup,
+.logout {
+    max-width: 500px; /* Increase max-width for a wider form */
+    margin: 0 auto;
+    padding: 30px; /* Increase padding for more spacious appearance */
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Increase border radius for a rounded shape */
+    background-color: #fff;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    text-align: center; /* Center the content horizontally */
+}
+
+/* Shared styles for headings */
+.login h1,
+.signup h1,
+.logout h1 {
+    margin-bottom: 20px;
+}
+
+/* Form styles */
+.login form,
+.signup form {
+    margin-top: 20px;
+}
+
+/* Input field styles */
+.login input[type="text"],
+.login input[type="email"],
+.login input[type="password"],
+.signup input[type="text"],
+.signup input[type="email"],
+.signup input[type="password"] {
+    width: calc(100% - 20px); /* Subtract padding from width */
+    padding: 15px; /* Increase padding for larger input fields */
+    margin-bottom: 15px; /* Increase margin for more spacing between inputs */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+/* Button styles */
+.login .btn-primary,
+.signup .btn-primary,
+.logout .btn-primary {
+    width: calc(100% - 22px); /* Subtract padding and border from width */
+    padding: 15px; /* Increase padding for larger buttons */
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Button hover styles */
+.login .btn-primary:hover,
+.signup .btn-primary:hover,
+.logout .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Media queries for screens smaller than 767px */
+@media (max-width: 767px) {
+    /* Adjust max-width for smaller screens */
+    .login,
+    .signup,
+    .logout {
+        max-width: 100%;
+    }
+
+    /* Adjust input fields and buttons width for smaller screens */
+    .login input[type="text"],
+    .login input[type="email"],
+    .login input[type="password"],
+    .login .btn-primary,
+    .signup input[type="text"],
+    .signup input[type="email"],
+    .signup input[type="password"],
+    .signup .btn-primary,
+    .logout input[type="text"],
+    .logout input[type="email"],
+    .logout input[type="password"],
+    .logout .btn-primary {
+        width: calc(100% - 30px); /* Adjust width for smaller screens */
+    }
+}

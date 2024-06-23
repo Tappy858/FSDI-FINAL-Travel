@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static '/css/base.css' %}">
+<section class="home">
+    <h2>Explore a whole new world at a click!</h2>
+
+    <div class="wrapper">
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id odit quibusdam, ad dolorum hic eos voluptates reprehenderit omnis magnam? Adipisci dicta delectus, incidunt assumenda obcaecati illo eveniet a ut repudiandae.
+            Suscipit, beatae. Veritatis ad itaque at dicta ullam iste pariatur labore facere velit laboriosam. Ullam corporis soluta ipsum repellendus, cupiditate voluptatum. Qui, sint velit rerum aperiam at sequi nam ullam!
+            Nam repellendus, porro praesentium maiores similique architecto dicta, nobis, nisi iste eius illum sequi. Eveniet, amet sapiente cupiditate sed illo voluptas delectus officia qui aperiam porro distinctio in non id.
+        </p>
+    </div>
+</section>
+<section class="project-section center-column">
+    <h3>Travel Sites</h3>
+
+    <div class="project-list">
+        {% for project in blog %}
+        {% include 'blog/travel.html' %}
+        {% endfor %}
+    </div> <!-- End of project list -->
+
+</section>
+{% endblock content %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Logged Out{% endblock title %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static '/css/users.css' %}">
+<div class="logout text-center mt-5">
+    <h1>Logged Out</h1>
+    <p>You have been logged out!</p>
+    <p>You will be redirected to the home page in <span id="timer">5</span> seconds.</p>
+</div>
+{% endblock content %}
+
+{% block extra_js %}
+<script>
+    // Countdown Timer Script
+    function startRedirectTimer(duration, display) {
+        var timer = duration, seconds;
+        var interval = setInterval(function () {
+            seconds = parseInt(timer % 60, 10);
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            display.textContent = seconds;
+
+            if (--timer < 0) {
+                clearInterval(interval);
+                window.location.href = "{% url 'home' %}";
+            }
+        }, 1000);
+    }
+
+    window.onload = function () {
+        var fiveSeconds = 5,  // Set timer for 5 seconds
+            display = document.querySelector('#timer');
+        startRedirectTimer(fiveSeconds, display);
+    };
+</script>
+{% endblock extra_js %}
