@@ -1,0 +1,76 @@
+/* static/css/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.about {
+    text-align: center;
+    padding: 20px;
+    background-color: #e3f2fd; /* Softer background color */
+    color: #007bff; /* Matching the color scheme */
+    margin-bottom: 20px;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.about-text, .about-image-container {
+    flex: 1 1 100%;
+    padding: 10px;
+}
+
+.about-text {
+    order: 2;
+}
+
+.about-image-container {
+    order: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img.about-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+h1, h2 {
+    margin-bottom: 15px;
+}
+
+p {
+    line-height: 1.6;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+/* Media Queries for Responsive Design */
+@media(min-width: 768px) {
+    .about-text, .about-image-container {
+        flex: 1;
+    }
+    .about-text {
+        order: 1;
+    }
+    .about-image-container {
+        order: 2;
+    }
+}
