@@ -2,10 +2,15 @@
 {% load static %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static '/css/base.css' %}">
-<section class="home">
-    <h2>Explore a whole new world at a click!</h2>
+<div class="home">
+    <div class="content">
+        <h5>Travel-R-Us</h5>
+        <h1>Visit <span class="changecontent"></span></h1>
+        <p>Explore a whole new world at a <a href="{% url 'signup' %}">Click!</a></p>
+    </div>
+</div>
 
+<section class="">
     <div class="wrapper">
         <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id odit quibusdam, ad dolorum hic eos voluptates reprehenderit omnis magnam? Adipisci dicta delectus, incidunt assumenda obcaecati illo eveniet a ut repudiandae.
