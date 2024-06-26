@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
-from django.core.mail import send_mail
-from django.conf import settings
+from blog.forms import ContactForm
 from django.contrib import messages
+from django.core.mail import EmailMessage
+from config import settings
 from .models import *
 
 # Create your views here.
@@ -17,20 +18,38 @@ def projects_view(request):
 
 def contact_view(request):
     if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        message = request.POST.get('message')
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # Save the form data to the database
+            form_instance = form.save()
 
-        # You can customize the email content and settings as needed
-        send_mail(
-            f"Contact Form Submission from {name}",
-            message,
-            email,
-            [settings.DEFAULT_FROM_EMAIL],
-            fail_silently=False,
-        )
+            # Retrieve cleaned data
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
 
-        messages.success(request, 'Thank you for your message. We will get back to you shortly.')
-        return redirect('home')
+            # Construct email message
+            email_subject = 'Contact Form Submission from {}'.format(name)
+            email_message = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+            from_email = settings.EMAIL_HOST_USER
+            to_email = 'test.mailtrap1234@gmail.com'  # Admin email
 
-    return render(request, 'blog/contact.html')
+            # Send email
+            email = EmailMessage(
+                email_subject,
+                email_message,
+                from_email,
+                [to_email],
+                reply_to=[email]
+            )
+            email.send()
+
+            # Display success message and redirect
+            messages.success(request, 'Thank you for your message. We will get back to you shortly.')
+            return redirect('home')
+        else:
+            messages.error(request, 'There was an error in your form. Please correct it and try again.')
+    else:
+        form = ContactForm()
+
+    return render(request, 'blog/contact.html', {'form': form})
