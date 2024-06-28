@@ -35,7 +35,7 @@
 }
 
 .footer h5 {
-    font-family: 'YourFont', sans-serif; /* Set footer heading font family */
+    font-family: sans-serif; /* Set footer heading font family */
     color: #333; /* Set footer heading text color */
 }
 
