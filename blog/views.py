@@ -5,6 +5,8 @@ from django.core.mail import EmailMessage
 from config import settings
 from .models import *
 
+
+
 # Create your views here.
 def home(request):
     blog = Project.objects.all()

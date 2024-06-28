@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
+from environs import Env
+
+env = Env()
+env.read_env()
 
 
 
@@ -22,12 +26,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2^n3631a6w=9wwmk4r_f1$-r(cf1oyih+$$argikq-7a3yxbz2'
+SECRET_KEY = env.str("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DEBUG", default=False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".herokuapp.com"]
 
 
 # Application definition
@@ -135,10 +139,12 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+EMAIL_BACKEND = ("django.core.mail.backends.%s.EmailBackend"
+                    % env.str("EMAIL_BACKEND", default="smtp"))
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_HOST_USER = '2bf58f70e35963'
-EMAIL_HOST_PASSWORD = '6b70075bc694ef'
-EMAIL_PORT = '2525'
-EMAIL_USE_TLS = True  # or EMAIL_USE_SSL = True for SSL
+EMAIL_HOST =  env.str("EMAIL_HOST")
+EMAIL_HOST_USER = env.str("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env.str("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = 2525
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = env.str("DEFAULT_FROM_EMAIL")
